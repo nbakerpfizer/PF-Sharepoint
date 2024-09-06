@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Color Change</title>
+    <style>
+        .date-text {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="date-text">2024-09-06</div> <!-- Example date -->
+    <div class="date-text">2024-09-07</div> <!-- Example date -->
+
+    <script>
+        // Function to format date as YYYY-MM-DD
+        function formatDate(date) {
+            let d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+
+            return [year, month, day].join('-');
+        }
+
+        // Get today's date
+        let today = formatDate(new Date());
+
+        // Get all elements that might contain the date
+        let elements = document.querySelectorAll('.date-text');
+
+        elements.forEach(function(element) {
+            if (element.textContent.trim() === today) {
+                element.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
